@@ -21,10 +21,10 @@
       %div
         = render "topics/follow_button", topic: topic
     - else
-      %div= current_user.full_name
+      %div{style: "font-size: 20px;color: #B92B27;"}= current_user.full_name
       %h4
         %a.ask-question-link{data: {"test-id": "questions-index-ask-question-link", toggle: "modal", target: "#new-question-modal"}}
-          What is your question?
+          Please put you question here?
   - @questions.each do |question|
     .feed-item
       = render "questions/item", question: question
