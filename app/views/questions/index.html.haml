@@ -1,13 +1,7 @@
 = content_for :style do
   = stylesheet_link_tag 'index_page', 'data-turbolinks-track': 'reload'
-.col-md-2
-  %h4 Feeds
-  %hr
-  .list-group
-    = link_to "Followed Topics", questions_url(topic_id: current_user.topics.pluck(:id)), class: "list-group-item"
-    - current_user.topics.each do |topic|
-      = link_to topic.name, questions_url(topic_id: topic.id), class: "list-group-item"
-.col-md-8
+
+.col-md-10
   .feed-item
     - if params[:topic_id].is_a?(String)
       - topic = Topic.find(params[:topic_id])
@@ -30,4 +24,9 @@
       = render "questions/item", question: question
   = paginate @questions
 .col-md-2
-  TODO
+  %h4 My Feeds
+  %hr
+  .list-group
+    = link_to "Followed Topics", questions_url(topic_id: current_user.topics.pluck(:id)), class: "list-group-item"
+    - current_user.topics.each do |topic|
+      = link_to topic.name, questions_url(topic_id: topic.id), class: "list-group-item"
